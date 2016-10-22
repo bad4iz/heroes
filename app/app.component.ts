@@ -1,28 +1,32 @@
 import { Component } from '@angular/core';
-
-export class Hero{
+export class Hero {
     id: number;
     name: string;
 }
-
 @Component({
     selector: 'my-app',
-    template: `
-            <h1>{{title}}</h1>
-            <h2>{{hero.name}}</h2>
-            <div>
-                <label>id: </label>{{hero.id}}
-            </div>
-            <div>
-                <label>name: </label>
-                <input [(ngModel)]="hero.name" placeholder="имя">
-            </div>
-                 `
+    styleUrls: ['./app/app.component.css'],
+    templateUrl: './app/hero.component.html',
 })
 export class AppComponent {
-    title = 'тур героев';
-    hero: Hero = {
-        id:1,
-        name: 'вася'
-    };
+    title = 'Tour of Heroes';
+    selectedHero: Hero;
+    heroes = HEROES;
+    onSelect(hero: Hero): void {
+        this.selectedHero = hero;
+        console.log('ну чо мы нажили и ничего не происходит?')
+    }
 }
+
+const HEROES: Hero[] = [
+    { id: 11, name: 'Mr. Nice' },
+    { id: 12, name: 'Narco' },
+    { id: 13, name: 'Bombasto' },
+    { id: 14, name: 'Celeritas' },
+    { id: 15, name: 'Magneta' },
+    { id: 16, name: 'RubberMan' },
+    { id: 17, name: 'Dynama' },
+    { id: 18, name: 'Dr IQ' },
+    { id: 19, name: 'Magma' },
+    { id: 20, name: 'Tornado' }
+];
